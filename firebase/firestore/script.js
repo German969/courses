@@ -1,4 +1,26 @@
 $(document ).ready(function() {
+
+    loadData();
+    
+    function loadData(){
+        employeesRef.get().then(function (querySnapshot) {
+            loadTableData(querySnapshot)
+        })
+    }
+
+    function loadTableData(querySnapshot){
+        var tableRow='';
+        querySnapshot.forEach(function(doc) {
+            var document = doc.data();
+            tableRow += '<tr>';
+            tableRow += '<td class="fname">' + document.fName + '</td>';
+            tableRow += '<td class="editEmployee"><i class="fa fa-pencil" aria-hidden="true" style+"color:green"></i></td>';
+            tableRow += '<td class="deleteEmployee"><i class="fa fa-trash" aria-hidden="true" style+"color:green"></i></td>';
+            tableRow += '</tr>';
+        })
+        $('tbody.tbodyData').html(tableRow);
+    }
+    
     //get all the data on app startup
     $('#createEmployee').click(function(){
         $('.employeeForm').css("display", "block");
@@ -17,8 +39,28 @@ $(document ).ready(function() {
 
         //check if you need to create or update an employee
         if($(this).text() == "Save Changes"){
+            var docuName = fname.charAt(0) + "." + lname;
+            db.collection("employees").doc(docuName).set({
+                fName: fname,
+                lName: lname
+            }).then(function(docRef) {
+                $('#operationStatus').html('<div class="alert alert-success"><strong>Success!</strong> Employee was created!</div>').delay(2500).fadeOut('slow');
+                $('.employeeForm').css("display", "none");
+                loadData();
+            })
         }
         else{
+            var docuName = fname.charAt(0) + "." + lname;
+            var sfDocRef = db.collection("employees").doc(docuName);
+            sfDocRef.set({
+                fName: fname,
+                lName: lname
+            }, {merge: true})
+            .then(function() {
+                $('#operationStatus').html('<div class="alert alert-success"><strong>Success!</strong>,/div>');
+                $('.employeeForm').css("display", "none");
+                loadData();
+            })
         }
     });
 

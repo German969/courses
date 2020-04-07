@@ -14,6 +14,28 @@
         <!-- custom styles -->
         <link rel="stylesheet" href="styles.css" >
 
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
+        <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+            apiKey: "AIzaSyAvMhI3ly3gTSbI9MMHrrzMkpkkZusrczQ",
+            authDomain: "employees-f9d7e.firebaseapp.com",
+            databaseURL: "https://employees-f9d7e.firebaseio.com",
+            projectId: "employees-f9d7e",
+            storageBucket: "employees-f9d7e.appspot.com",
+            messagingSenderId: "680657180448",
+            appId: "1:680657180448:web:70579d4006e8ebbdde6945"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+        </script>
+
         <!-- initialize script -->
         <script src="initialize.js"></script>
         <!-- filtering scripts -->
