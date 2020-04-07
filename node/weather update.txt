@@ -1,0 +1,47 @@
+31. Making HTTP Requests
+
+--
+
+In this lesson, we start to fetch weather data using the DarkSky API. This is no longer available as I mentioned in my original message at the top. Instead or using DarkSky, the course will now use WeatherStack.
+
+In the lesson, I tell you to sign up for a DarkSky developer account. Instead, you'll signup for a free WeatherStack account which you can do here. https://weatherstack.com/signup/free
+
+After signing up, you'll be redirected to their quick-start guide which you can find here. This page contains you're API key. You'll need that API key in order to use the WeatherStack API.
+
+In the lesson, we move on and open up a sample request in the browser so we can explore the response. For WeatherStack, the sample URL would be:
+
+http://api.weatherstack.com/current?access_key=KEYHERE&query=37.8267,-122.4233
+Make sure to swap out KEYHERE with your API key. So if you're API key was abc123, the final URL would be:
+
+http://api.weatherstack.com/current?access_key=abc123&query=37.8267,-122.4233
+For the rest of this written guide, I'll pretend my API key is abc123.
+
+Visiting that URL should show you the weather data for a location in California. The response will look pretty different, but we'll talk about the differences in a future lecture. For the moment, just make sure you can see a response with some weather data.
+
+At the end of the lesson, we copy the URL into app.js and use it as the value for the url variable. Instead of copying the DarkSky URL, make sure to copy your WeatherStack URL. All other code will remain the same.
+
+
+
+32. Customizing HTTP Requests
+
+--
+
+In this lesson, we'' start to access the properties on the response body. DarkSky and WeatherStack have different response objects with different properties. The values used in the console.log call will need to change.
+
+First, the weather summary. Instead of response.body.daily.data[0].summary , response.body.current.weather_descriptions[0] should be used.
+
+Next, the current temperature. Instead of response.body.currently.temperature, response.body.current.temperature should be used.
+
+Lastly, the precipitation chance. WeatherStack doesn't provided this data. Instead, I'd recommend pulling off something else like the "feels like" temperature. Instead of response.body.currently.precipProbability, response.body.current.feelslike could be used.
+
+As we cover in the lecture, you can also customize the units and language for WeatherStack. You can use the units query parameter with a value of m for Celsius, s for Kelvin, or f for Fahrenheit. You can use the language query parameter with the correct ISO code as shown in the lesson.
+
+This would be the final code for the lesson.
+
+const request = require('request')
+ 
+const url = 'http://api.weatherstack.com/current?access_key=abc123&query=37.8267,-122.4233'
+ 
+request({ url: url, json: true }, (error, response) => {
+    console.log(response.body.current.weather_descriptions[0] + '. It is currently ' + response.body.current.temperature + ' degress out. It feels like ' + response.body.current.feelslike + ' degress.')
+})
