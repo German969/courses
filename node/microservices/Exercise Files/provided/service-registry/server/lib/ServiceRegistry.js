@@ -15,7 +15,7 @@ class ServiceRegistry {
       this.services[key].port = port;
       this.services[key].name = name;
       this.services[key].version = version;
-      this.log.debugger(`Added services ${name}, version ${version} at ${ip}:${port}`);
+      //this.log.debugger(`Added services ${name}, version ${version} at ${ip}:${port}`);
       return key;
     }
     this.services[key].timestamp = Math.floor(new Date() / 1000);
