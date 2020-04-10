@@ -1,5 +1,7 @@
 /* eslint-disable class-methods-use-this */
 const axios = require('axios');
+const url = require('url');
+const crypto = require('crypto');
 
 const CircuitBreaker = require('../lib/CircuitBreaker');
 
@@ -9,6 +11,7 @@ class SpeakersService {
   constructor({ serviceRegistryUrl, serviceVersionIdentifier }) {
     this.serviceRegistryUrl = serviceRegistryUrl;
     this.serviceVersionIdentifier = serviceVersionIdentifier;
+    this.cache = {};
   }
 
   async getImage(path) {
@@ -69,7 +72,19 @@ class SpeakersService {
   }
 
   async callService(requestOptions) {
-    return CircuitBreaker.callService(requestOptions);
+    const servicePath = url.parse(requestOptions.url).path;
+
+    const cacheKey = crypto.createHash('md5').update(requestOptions.method + servicePath).digest('hex');
+
+    const result = await circuitBreaker.callService(requestOptions);
+
+    if (!result) {
+      if (this.cache[cacheKey]) return this.cache[cacheKey];
+      return false;
+    }
+
+    this.cache[cacheKey] = result;
+    return result;
   }
 
   async getService(serviceName) {

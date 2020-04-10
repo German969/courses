@@ -24,9 +24,6 @@ class CircuitBreaker {
       this.onFailure(endpoint);
       return false;
     }
-
-    const response = await axios(requestOptions);
-    return response.data;
   }
 
   onSuccess(endpoint) {
@@ -44,7 +41,7 @@ class CircuitBreaker {
   }
 
   canRequest(endpoint) {
-    if(!this.states[endpoint]) this.initState(endpoint);
+    if (!this.states[endpoint]) this.initState(endpoint);
     const state = this.states[endpoint];
     if (state.circuit === 'CLOSED') return true;
     const now = new Date() / 1000;
