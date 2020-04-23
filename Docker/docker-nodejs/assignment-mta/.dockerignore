@@ -1,0 +1,8 @@
+in/
+out/
+logs/
+node_modules/
+
+.git/
+npm_debug
+docker-compose*.yml
