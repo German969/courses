@@ -23,5 +23,15 @@
     "id": "HkYC--Lt8",
     "from": "alice",
     "text": "how are you"
+  },
+  {
+    "id": "BJaM_MIKL",
+    "from": "alice",
+    "text": "im alice"
+  },
+  {
+    "id": "HyrQOzIYI",
+    "from": "bob",
+    "text": "im bob"
   }
 ]
