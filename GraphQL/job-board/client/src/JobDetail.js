@@ -13,8 +13,6 @@ export class JobDetail extends Component {
 
     const job = await loadJob(jobId);
 
-    console.log(job);
-
     this.setState({ job });
   }
 
