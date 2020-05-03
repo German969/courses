@@ -1,0 +1,24 @@
+{
+  "name": "complete-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "es6": "./node_modules/.bin/http-server -c1 .",
+    "tsc-w": "./node_modules/.bin/tsc ./samples/learning-types.ts -w",
+    "types-examples": "noed ./samples/learning-types.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.150",
+    "@types/node": "^13.13.4",
+    "http-server": "^0.12.3",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
