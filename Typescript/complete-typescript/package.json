@@ -7,6 +7,7 @@
     "es6": "./node_modules/.bin/http-server -c1 .",
     "tsc-w": "./node_modules/.bin/tsc ./samples/learning-types.ts -w",
     "types-examples": "noed ./samples/learning-types.js",
+    "oo": "node ./samples/object-oriented.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
