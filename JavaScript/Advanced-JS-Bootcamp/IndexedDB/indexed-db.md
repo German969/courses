@@ -1,15 +1,20 @@
+# IndexedDB
+```
 'use strict'
-// IndexedDB
 
 import { openDB, deleteDB } from 'https://unpkg.com/idb?module'
+```
 
-// Safeguard
+## Safeguard
+```
 if (!('indexedDB' in window)) {
   console.warn('IndexedDB not supported')
   return
 }
+```
 
-// Create database
+## Create database
+```
 (async () => {
   //...
 
@@ -23,15 +28,19 @@ if (!('indexedDB' in window)) {
     }
   })
 })()
+```
 
-// Check if already exists
+## Check if already exists
+```
 const storeName = 'store1'
 
 if (!db.objectStoreNames.contains(storeName)) {
   db.createObjectStore(storeName)
 }
+```
 
-// Add data on creation
+## Add data on creation
+```
 (async () => {
   //...
   const dbName = 'mydbname'
@@ -45,8 +54,10 @@ if (!db.objectStoreNames.contains(storeName)) {
     }
   })
 })()
+```
 
-// Add data on transaction
+## Add data on transaction
+```
 (async () => {
   //...
   const dbName = 'mydbname'
@@ -63,24 +74,34 @@ if (!db.objectStoreNames.contains(storeName)) {
   const value = await store.put(val, key)
   await tx.done
 })()
+```
 
-// Retrieve data
-// One item
+## Retrieve data
+### One item
+```
 const key = 'Hello again'
 const item = await db.transaction(storeName).objectStore(storeName).get(key)
+```
 
-// All keys
+### All keys
+```
 const items = await db.transaction(storeName).objectStore(storeName).getAllKeys()
+```
 
-// All values
+### All values
+```
 const items = await db.transaction(storeName).objectStore(storeName).getAll()
+```
 
-// Delete data
-// Delete db
+## Delete data
+### Delete db
+```
 const dbName = 'mydbname'
 await deleteDB(dbName)
+```
 
-// Delete object in store
+### Delete object in store
+```
 (async () => {
   //...
 
@@ -101,8 +122,10 @@ await deleteDB(dbName)
   await store.delete(key)
   await tx.done
 })()
+```
 
-// Migrate to a new version
+## Migrate to a new version
+```
 (async () => {
   //...
   const dbName = 'mydbname'
@@ -123,3 +146,4 @@ await deleteDB(dbName)
     }
   })
 })()
+```

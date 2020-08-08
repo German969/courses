@@ -1,34 +1,43 @@
-// Speech Synthesis API
+# Speech Synthesis API
 
-// part of the Web Speech aPI, along with Speech Recognition API
+**part of the Web Speech aPI, along with Speech Recognition API**
 
-// Available un the window object
-// Usage
-speechSynthesis.speak(new SpeechSynthesisUtterance('Hey'))
+*Available un the window object*
 
-// SpeechSynthesisUtterance
-// represents a speech request
+## Usage
+`speechSynthesis.speak(new SpeechSynthesisUtterance('Hey'))``
+
+## SpeechSynthesisUtterance
+*represents a speech request*
+```
 const utterance = new SpeechSynthesisUtterance('Hey')
-// rate -> set speed (0.1 - 10)
-// pitch -> (0 - 2)
-// volume -> (0 - 1)
-// lang -> set language (BCP 47 en-US it-IT)
-// text -> set dinamically, max 32767 chars
-// voice
+```
+- rate -> set speed (0.1 - 10)
+- pitch -> (0 - 2)
+- volume -> (0 - 1)
+- lang -> set language (BCP 47 en-US it-IT)
+- text -> set dinamically, max 32767 chars
+- voice
+```
 const utterance = new SpeechSynthesisUtterance('Hey')
 utterance.pitch = 1.5
 utterance.volume = 0.5
 utterance.rate = 8
 speechSynthesis.speak(utterance)
+```
 
-// Change the voice
-// See available browser list (not chrome)
+## Change the voice
+### See available browser list (not chrome)
+```
 console.log(`Voices #: ${speechSynthesis.getVoices().length}`)
 
 speechSynthesis.getVoices().forEach(voice => {
   console.log(voice.name, voice.lang)
 })
-// See voices (chrome) (with a callback because if theres a network connection check on google servers)
+```
+
+### See voices (chrome) (with a callback because if theres a network connection check on google servers)
+```
 const voiceschanged = () => {
   console.log(`Voices #: ${speechSynthesis.getVoices().length}`)
   speechSynthesis.getVoices().forEach(voice => {
@@ -36,9 +45,11 @@ const voiceschanged = () => {
   })
 }
 speechSynthesis.onvoiceschanged = voiceschanged
-// To check if a lang is available offline check localService property
+```
+*To check if a lang is available offline check localService property*
 
-// Cross browser implementation
+## Cross browser implementation
+```
 const getVoices = () => {
   return new Promise(resolve => {
     let voices = speechSynthesis.getVoices()
@@ -60,13 +71,17 @@ const printVoicesList = async () => {
 }
 
 printVoicesList()
+```
 
-// Using a custom language
+## Using a custom language
+```
 let utterance = new SpeechSynthesisUtterance('Ciao')
 utterance.lang = 'it-IT'
 speechSynthesis.speak(utterance)
+```
 
-// Use another voice
+## Use another voice
+```
 const lang = 'it-IT'
 const voiceIndex = 1
 
@@ -102,6 +117,7 @@ const chooseVoice = async () => {
 }
 
 speak('Ciao')
+```
 
-// Multiple voices
-// Any subsequent attempt to make a voice play after the first one is created will be queued in the utterance queue
+## Multiple voices
+*Any subsequent attempt to make a voice play after the first one is created will be queued in the utterance queue*

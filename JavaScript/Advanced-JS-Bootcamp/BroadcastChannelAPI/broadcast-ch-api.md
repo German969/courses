@@ -1,15 +1,23 @@
-// Broadcast Channel API
+# Broadcast Channel API
 
-// Create broadcast channel
+## Create broadcast channel
+```
 const channel = new BroadcastChannel('thechannel')
+```
 
-// Send a message
+## Send a message
+```
 channel.postMessage('Hey!')
+```
 
-// Receive message
+## Receive message
+```
 channel.onmessage = event => {
   console.log('Received', event.data)
 }
+```
 
-// Close the Channel
+## Close the Channel
+```
 channel.close()
+```
