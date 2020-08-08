@@ -1,0 +1,109 @@
+<style>
+body {
+  background-color: #F1C40F;
+  text-align: center;
+}
+
+button {
+  border: 20px solid white;
+  margin: 30px;
+  padding: 30px;
+  color: white;
+  font-size: 2rem;
+  outline: none;
+  cursor: pointer;
+}
+
+button {
+  background-color: #2274A5;
+}
+
+input {
+  border: 20px solid #D90368;
+  margin: 30px;
+  padding: 30px;
+  color: #666;
+  font-size: 2rem;
+  outline: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center
+}
+
+
+select {
+  border: 20px solid #00CC66;
+  margin-top: 30px;
+  padding: 30px;
+  color: #666;
+  font-size: 2rem;
+  outline: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<input class="text" type="text" placeholder="insert text" />
+
+<select class="language">
+  <option value="en-US">American English</option>
+  <option value="en-UK">UK English</option>
+  <option value="de-DE">German</option>
+  <option value="it-IT">Italian</option>
+</select>
+<select class="voice">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
+
+<button>Computer, say the thing!</button>
+<script>
+const speak = async (text, lang, voiceIndex) => {
+  const message = new SpeechSynthesisUtterance(text)
+
+  message.voice = await chooseVoice(lang, voiceIndex)
+  //...
+
+  speechSynthesis.speak(message)
+}
+
+const chooseVoice = async (lang, voiceIndex) => {
+  const voices = (await getVoices()).filter(voice => voice.lang === lang)
+  return voices[voiceIndex]
+}
+
+const getVoices = () => {
+  return new Promise((resolve) => {
+    let voices = speechSynthesis.getVoices()
+
+    if (voices.length) {
+      resolve(voices)
+      return
+    }
+
+    const voiceschanged = () => {
+      voices = speechSynthesis.getVoices()
+      resolve(voices)
+    }
+
+    speechSynthesis.onvoiceschanged = voiceschanged
+  })
+}
+
+
+document.querySelector('button').addEventListener('click', () => {
+  const text = document.querySelector('input').value
+  if (!text) {
+    alert('Enter some text!')
+    return
+  }
+
+  const lang = document.querySelector('.language').value
+  const voiceIndex = document.querySelector('.voice').value
+
+  speak(text, lang, voiceIndex)
+})
+</script>

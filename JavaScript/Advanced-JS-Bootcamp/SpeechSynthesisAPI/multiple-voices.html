@@ -1,0 +1,30 @@
+<style>
+body {
+  background-color: #F1C40F;
+  text-align: center;
+}
+
+button {
+  border: 20px solid white;
+  margin: 30px;
+  padding: 30px;
+  color: white;
+  font-size: 2rem;
+  outline: none;
+  cursor: pointer;
+}
+
+button.first {
+  background-color: #D90368;
+}
+
+button.second {
+  background-color: #2274A5;
+}
+</style>
+
+<button class="first" onclick="say('Hello dear programmer!')">Click me to say 'Hello dear programmer!'</button>
+<button class="second" onclick="say('Hello computer!')">Click me to say 'Hello computer!'</button>
+<script>
+const say = text => speechSynthesis.speak(new SpeechSynthesisUtterance(text))
+</script>

@@ -1,0 +1,60 @@
+<style>
+body {
+  background-color: #F1C40F;
+  text-align: center;
+  font-family: courier
+}
+
+ul {
+  border: 20px solid white;
+  padding-left: 0px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+li {
+  margin: 0px;
+  padding: 20px;
+  margin-left: 0px;
+  color: white;
+  font-size: 1.4rem;
+  outline: none;
+  background-color: #2274A5;
+  list-style-type: none;
+}
+</style>
+<ul>
+
+</ul>
+<script>
+const getVoices = () => {
+  return new Promise((resolve) => {
+    let voices = speechSynthesis.getVoices()
+
+    if (voices.length) {
+      resolve(voices)
+      return
+    }
+
+    const voiceschanged = () => {
+      voices = speechSynthesis.getVoices()
+      resolve(voices)
+    }
+
+    speechSynthesis.onvoiceschanged = voiceschanged
+  })
+}
+
+const printVoicesList = async () => {
+  (await getVoices()).forEach(voice => {
+    console.log(voice.name, voice.lang)
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(`${voice.name} - ${voice.lang}`))
+
+    document.querySelector('ul').appendChild(li)
+
+  })
+}
+
+printVoicesList()
+</script>
