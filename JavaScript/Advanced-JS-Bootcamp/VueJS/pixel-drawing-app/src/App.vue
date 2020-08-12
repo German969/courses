@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ColorPicker :color=color />
+    <Canvas :pixels=pixels />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Canvas from './components/Canvas.vue'
+import ColorPicker from './components/ColorPicker'
+
+const defaultColor = 'white'
 
 export default {
   name: 'App',
+  data: function() {
+    return {
+      color: defaultColor,
+      pixels: Array(30 * 30)
+        .fill()
+        .map(() => defaultColor)
+    }
+  },
+  mounted() {
+    this.$root.$on('updatecolor', color => {
+      this.color = color
+    });
+    this.$root.$on('clickedpixel', index => {
+      this.pixels.splice(index, 1, this.color)
+    })
+  },
   components: {
-    HelloWorld
+    Canvas,
+    ColorPicker
   }
 }
 </script>
@@ -23,6 +43,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>
