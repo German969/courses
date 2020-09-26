@@ -1,0 +1,21 @@
+{
+  "name": "rss-reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.2",
+    "electron-reloader": "^1.0.1"
+  },
+  "dependencies": {
+    "electron-store": "^6.0.0",
+    "rss-parser": "^3.9.0"
+  }
+}
