@@ -1,0 +1,7 @@
+{
+  "name": "ionicweight",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
