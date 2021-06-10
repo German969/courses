@@ -13,7 +13,7 @@ function reverse(str) {
 function reverse2(str) {
   let reversed = '';
 
-  for (let character of str) {
+  for (let character of str) { // Runtime complexity: Linear runtime (N)
     reversed = character + reversed;
   }
 

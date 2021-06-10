@@ -18,10 +18,10 @@
 //       '####'
 
 function steps(n) {
-  for (let row = 0; row < n; row++) {
+  for (let row = 0; row < n; row++) { // First loop
     let stair = '';
 
-    for (let column = 0; column < n; column++) {
+    for (let column = 0; column < n; column++) { // Runtime complexity: Quadratic runtime (N^2)
       if (column <= row) {
         stair += '#';
       } else {
