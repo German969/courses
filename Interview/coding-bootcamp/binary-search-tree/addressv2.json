@@ -1,0 +1,694 @@
+{ 
+  "_id" : ObjectId("626afe572fded187fb3795c3"), 
+  "idPageMetadata" : NumberInt(11), 
+  "partner" : "ElavonIreland", 
+  "currentRoute" : "/applicant-details/limited-company", 
+  "applicationState" : {
+      "accessToken" : "abc123", 
+      "reference" : "fgh456", 
+      "journeyProgress" : {
+          "1" : NumberInt(40), 
+          "2" : NumberInt(45), 
+          "3" : NumberInt(50), 
+          "4" : NumberInt(55), 
+          "5" : NumberInt(60), 
+          "6" : NumberInt(60)
+      }, 
+      "marketingStatus" : "pre-approved"
+  }, 
+  "scaffoldMetadata" : {
+      "template" : {
+          "componentName" : "VerticalOneColumn", 
+          "properties" : {
+              "header" : {
+                  "componentName" : "HeaderContainer", 
+                  "strategies" : [
+                      {
+                          "name" : "ApplicationStrategy", 
+                          "options" : {
+                              "values" : [
+                                  "marketingStatus", 
+                                  "decisionStatus", 
+                                  "journeyProgress", 
+                                  "maxQuoteLimit", 
+                                  "activeStep"
+                              ]
+                          }
+                      }
+                  ], 
+                  "properties" : {
+                      "currency" : "EUR", 
+                      "messages" : {
+                          "decisionStatus" : {
+                              "eligibleMessage" : "eligible", 
+                              "preApprovedMessage" : "pre-approved", 
+                              "approvedMessage" : "approved"
+                          }, 
+                          "statusMessage" : {
+                              "statusMessageTitle" : "Status:", 
+                              "statusMessagePlaceholder" : "You're {{decisionStatus }} for funding!", 
+                              "limitMessagePlaceholder" : "You're {{ decisionStatus }} for up to {{ maxQuoteLimit }} in funding!"
+                          }
+                      }, 
+                      "progress" : NumberInt(55), 
+                      "boxMessage" : "completed", 
+                      "steps" : [
+                          "Get started", 
+                          "Confirm your details", 
+                          "Select your quote", 
+                          "Finish"
+                      ], 
+                      "logo" : {
+                          "isInternal" : true, 
+                          "logoId" : "elavonLogoBlack", 
+                          "alt" : "Elavon"
+                      }, 
+                      "phone" : {
+                          "number" : "+353 1800 814180", 
+                          "label" : "Need help?"
+                      }
+                  }
+              }, 
+              "footer" : {
+                  "componentName" : "Footer", 
+                  "properties" : {
+                      "text" : "*As of April 2021, 86% of successful applications received funding within 2 working days. Any preliminary approval will be based on the information about your business that is available at the time. You will get a final decision after submitting an actual application.<br/>**You will be expected to operate your business in a way that ensures Liberis receives a monthly minimum amount of 3% of the total amount owed to Liberis.<br/>***Your credit score is unaffected when obtaining a quote. However, taking out a Liberis Cash Advance may affect your credit score, and any decision to take out a Liberis Cash Advance shall be solely at your own risk.<br/>This product is provided by Liberis Limited, a company registered in England and Wales with company number: 05654231 and address at: Space Building, 1st Floor, Scale, 58 Wood Ln, London W12 7RZ. Liberis is a responsible financial provider. Liberis’ Business Cash Advance is a form of receivables finance. Liberis does not provide regulated lending products of any type. The minimum expected duration of a Business Cash Advance is 120 days. Liberis is not authorised or regulated by the Financial Conduct Authority and the Financial Ombudsman Service will not be able to consider a complaint about Liberis. Amounts advanced are subject to status and our underwriting process before any offer can be made.<br/>The Elavon in partnership with Liberis Revenue-based Finance product is provided by Liberis Ltd. Eligibility criteria and terms and conditions apply. The Elavon in partnership with Liberis Revenue-based Finance product is not a Financial Conduct Authority regulated product, it is provided by Liberis Ltd and Elavon will receive a commission.</p>", 
+                      "links" : [
+                          {
+                              "href" : "https://apply.liberis.co.uk/elavon-privacy", 
+                              "children" : "Privacy Policy"
+                          }, 
+                          {
+                              "href" : "https://apply.liberis.co.uk/elavon-terms", 
+                              "children" : "Terms and Conditions"
+                          }, 
+                          {
+                              "href" : "https://apply.liberis.co.uk/elavon-cookies", 
+                              "children" : "Cookie Notice"
+                          }
+                      ]
+                  }
+              }
+          }
+      }
+  }, 
+  "dynamicMetadata" : {
+      "id" : "/applicant-details/limited-company", 
+      "route" : "/applicant-details/limited-company", 
+      "title" : "Elavon - Applicant details", 
+      "template" : {
+          "componentName" : "HorizontallyCentered", 
+          "properties" : {
+              "content" : {
+                  "componentName" : "Form", 
+                  "strategies" : [
+                      {
+                          "name" : "FormSubmissionStrategy", 
+                          "options" : {
+                              "formAction" : "getStartJourneyPage"
+                          }
+                      }, 
+                      {
+                          "name" : "ApiServiceStrategy", 
+                          "options" : {
+
+                          }
+                      }, 
+                      {
+                          "name" : "FormStepStrategy", 
+                          "options" : {
+
+                          }
+                      }
+                  ], 
+                  "properties" : {
+                      "dataSchema" : {
+                          "title" : "Confirm your details", 
+                          "type" : "object", 
+                          "properties" : {
+                              "consentSettlementTime" : {
+                                  "type" : "boolean", 
+                                  "default" : true
+                              }, 
+                              "consentAccountCreation" : {
+                                  "type" : "boolean", 
+                                  "default" : true
+                              }, 
+                              "applicants" : {
+                                  "type" : "object", 
+                                  "title" : "applicants", 
+                                  "properties" : {
+                                      "applicant_0" : {
+                                          "type" : "object", 
+                                          "required" : [
+                                              "dateOfBirth", 
+                                              "homeAddress", 
+                                              "homeOwnership", 
+                                              "telephone", 
+                                              "email"
+                                          ], 
+                                          "properties" : {
+                                              "dateOfBirth" : {
+                                                  "type" : "string", 
+                                                  "title" : "Date of birth"
+                                              }, 
+                                              "homeAddress": {
+                                                "type": "object",
+                                                "title": "Home address",
+                                                "properties": {
+                                                  "line1": {
+                                                    "type": "string",
+                                                    "title": "Line 1"
+                                                  },
+                                                  "line2": {
+                                                    "type": "string",
+                                                    "title": "Line 2"
+                                                  },
+                                                  "postcode": {
+                                                    "type": "string",
+                                                    "title": "Postcode"
+                                                  },
+                                                  "city": {
+                                                    "type": "string",
+                                                    "title": "City"
+                                                  }
+                                                }
+                                              },
+                                              "homeOwnership" : {
+                                                  "type" : "string", 
+                                                  "title" : "Are you a homeowner?", 
+                                                  "oneOf" : [
+                                                      {
+                                                          "const" : "1", 
+                                                          "title" : "I am a homeowner"
+                                                      }, 
+                                                      {
+                                                          "const" : "2", 
+                                                          "title" : "I am renting"
+                                                      }, 
+                                                      {
+                                                          "const" : "3", 
+                                                          "title" : "Other"
+                                                      }
+                                                  ]
+                                              }, 
+                                              "email" : {
+                                                  "type" : "string", 
+                                                  "default" : "##applicants.applicant_0.email##", 
+                                                  "format" : "email"
+                                              }, 
+                                              "telephone" : {
+                                                  "type" : "string", 
+                                                  "default" : "##applicants.applicant_0.telephone##", 
+                                                  "pattern" : "^\\+?[\\d\\s]{9,40}$"
+                                              }
+                                          }
+                                      }, 
+                                      "applicant_1" : {
+                                          "type" : "object", 
+                                          "required" : [
+                                              "dateOfBirth", 
+                                              "homeAddress", 
+                                              "homeOwnership", 
+                                              "firstName", 
+                                              "lastName", 
+                                              "telephone", 
+                                              "email"
+                                          ], 
+                                          "properties" : {
+                                              "firstName" : {
+                                                  "type" : "string", 
+                                                  "title" : "First name"
+                                              }, 
+                                              "lastName" : {
+                                                  "type" : "string", 
+                                                  "title" : "Last name"
+                                              }, 
+                                              "telephone" : {
+                                                  "type" : "string", 
+                                                  "title" : "Phone number", 
+                                                  "pattern" : "^\\+?[\\d\\s]{9,40}$"
+                                              }, 
+                                              "email" : {
+                                                  "type" : "string", 
+                                                  "title" : "Personal email address", 
+                                                  "format" : "email"
+                                              }, 
+                                              "dateOfBirth" : {
+                                                  "type" : "string", 
+                                                  "title" : "Date of birth"
+                                              }, 
+                                              "homeAddress": {
+                                                "step": 1,
+                                                "component": "loqateAddressLookup",
+                                                "internalProperties": {
+                                                  "onload": { "hideChildren": true },
+                                                  "useInternalValues": [
+                                                    "toggleDisplay",
+                                                    "setValue",
+                                                    "clearError"
+                                                  ]
+                                                },
+                                                "properties": {
+                                                  "findAddressURL": "/api/addresses/search",
+                                                  "retrieveAddressURL": "/api/addresses/retrieve",
+                                                  "debounceDelay": 1000,
+                                                  "showManualForm": true,
+                                                  "dataSchemaToLoqateFieldMap": {
+                                                    "line1": "Line1",
+                                                    "line2": "Line2",
+                                                    "state": "Province",
+                                                    "zipCode": "PostalCode"
+                                                  },
+                                                  "showSearchInputText": "Search for the address",
+                                                  "showManualInputText": "Enter the address manually",
+                                                  "noMatchText": "Nope! Can't find that, try to ",
+                                                  "noMatchManualFormlLinkText": "enter the address manually",
+                                                  "errorMessage": "We've had a problem looking for that - try again later"
+                                                },
+                                                "errorMessage": {
+                                                  "pattern": "Please use the correct format for your postcode, eg. W12 7RZ."
+                                                },
+                                                "line1": {
+                                                  "properties": {
+                                                    "noMargin": true,
+                                                    "hiddenLabel": true,
+                                                    "placeholder": "Line 1"
+                                                  }
+                                                },
+                                                "line2": {
+                                                  "properties": {
+                                                    "noMargin": true,
+                                                    "hiddenLabel": true,
+                                                    "placeholder": "Line 2"
+                                                  }
+                                                },
+                                                "city": {
+                                                  "properties": {
+                                                    "noMargin": true,
+                                                    "hiddenLabel": true,
+                                                    "placeholder": "State"
+                                                  }
+                                                },
+                                                "postcode": {
+                                                  "properties": {
+                                                    "noMargin": true,
+                                                    "hiddenLabel": true,
+                                                    "placeholder": "zip code"
+                                                  }
+                                                }
+                                              },
+                                              "homeOwnership" : {
+                                                  "type" : "string", 
+                                                  "title" : "What is their home owner status?", 
+                                                  "oneOf" : [
+                                                      {
+                                                          "const" : "1", 
+                                                          "title" : "Homeowner"
+                                                      }, 
+                                                      {
+                                                          "const" : "2", 
+                                                          "title" : "Renting"
+                                                      }, 
+                                                      {
+                                                          "const" : "3", 
+                                                          "title" : "Other"
+                                                      }
+                                                  ]
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }, 
+                      "uiSchema" : {
+                          "consentSettlementTime" : {
+                              "component" : "hiddenInput"
+                          }, 
+                          "consentAccountCreation" : {
+                              "component" : "hiddenInput"
+                          }, 
+                          "applicants" : {
+                              "applicant_0" : {
+                                  "dateOfBirth" : {
+                                      "component" : "dateInput", 
+                                      "step" : NumberInt(1)
+                                  }, 
+                                  "homeAddress" : {
+                                      "step" : NumberInt(1), 
+                                      "component" : "addressLookup", 
+                                      "internalProperties" : {
+                                          "useInternalValues" : [
+                                              "errors", 
+                                              "clearError"
+                                          ]
+                                      }, 
+                                      "properties" : {
+                                          "regex" : "(?:^[AC-FHKNPRTV-Yac-fhknprtv-y][0-9]{2}|D6W|d6w)[ -]?[0-9AC-FHKNPRTV-Yac-fhknprtv-y]{4}$", 
+                                          "countries" : [
+                                              "IRL"
+                                          ], 
+                                          "hideError" : true, 
+                                          "searchUrl" : "/api/addresses/search", 
+                                          "secondarySearchUrl" : "/api/addresses/search", 
+                                          "dataPointer" : "/applicants/applicant_0/homeAddress", 
+                                          "texts" : {
+                                              "pleaseUseCorrectFormat" : "Please use the correct format for your postcode, eg. A65 F4E2.", 
+                                              "enterAddressManually" : "Enter address manually", 
+                                              "findAddressByPostCode" : "Find address by postcode", 
+                                              "unknownAddressPt1" : "Your postcode cannot be found. Please click the link below to ", 
+                                              "unknownAddressPt2" : "enter your address manually.", 
+                                              "placeholders" : {
+                                                  "line1" : "Address line 1", 
+                                                  "line2" : "Address line 2", 
+                                                  "city" : "City", 
+                                                  "searchBox" : "Postal code", 
+                                                  "manualSearchBox" : "Postal code"
+                                              }, 
+                                              "lookupAriaLabel" : "Postal code"
+                                          }
+                                      }, 
+                                      "errorMessage" : {
+                                          "pattern" : "Please use the correct format for your postcode, eg. A65 F4E2."
+                                      }
+                                  }, 
+                                  "homeOwnership" : {
+                                      "component" : "buttonGroup", 
+                                      "properties" : {
+                                          "icons" : {
+                                              "1" : "HOME-OWNER-ROUNDED-FILLED", 
+                                              "2" : "RENTING-ROUNDED-FILLED", 
+                                              "3" : "OTHER-HOME-OWNER-STATUS-ROUNDED-FILLED"
+                                          }
+                                      }, 
+                                      "step" : NumberInt(2), 
+                                      "trigger" : "answerAndMoveNext"
+                                  }, 
+                                  "email" : {
+                                      "component" : "hiddenInput"
+                                  }, 
+                                  "telephone" : {
+                                      "component" : "hiddenInput"
+                                  }
+                              }, 
+                              "applicant_1" : {
+                                  "firstName" : {
+                                      "step" : NumberInt(3), 
+                                      "properties" : {
+                                          "placeholder" : "John"
+                                      }
+                                  }, 
+                                  "lastName" : {
+                                      "step" : NumberInt(3), 
+                                      "properties" : {
+                                          "placeholder" : "Doe"
+                                      }
+                                  }, 
+                                  "telephone" : {
+                                      "step" : NumberInt(4), 
+                                      "properties" : {
+                                          "placeholder" : "+441234567890", 
+                                          "toolTip" : {
+                                              "tip" : "Personal phone number of second owner"
+                                          }
+                                      }, 
+                                      "errorMessage" : {
+                                          "required" : "Please enter a valid phone number", 
+                                          "pattern" : "Please enter a valid phone number"
+                                      }
+                                  }, 
+                                  "email" : {
+                                      "step" : NumberInt(4), 
+                                      "properties" : {
+                                          "placeholder" : "JohnDoe@email.com", 
+                                          "toolTip" : {
+                                              "tip" : "Personal email of second owner"
+                                          }
+                                      }, 
+                                      "errorMessage" : {
+                                          "required" : "Please enter a valid email address", 
+                                          "format" : "Please enter a valid email address"
+                                      }
+                                  }, 
+                                  "dateOfBirth" : {
+                                      "component" : "dateInput", 
+                                      "step" : NumberInt(4)
+                                  }, 
+                                  "homeAddress" : {
+                                      "step" : NumberInt(4), 
+                                      "component" : "addressLookup", 
+                                      "internalProperties" : {
+                                          "useInternalValues" : [
+                                              "errors", 
+                                              "clearError"
+                                          ]
+                                      }, 
+                                      "properties" : {
+                                          "regex" : "(?:^[AC-FHKNPRTV-Yac-fhknprtv-y][0-9]{2}|D6W|d6w)[ -]?[0-9AC-FHKNPRTV-Yac-fhknprtv-y]{4}$", 
+                                          "countries" : [
+                                              "IRL"
+                                          ], 
+                                          "hideError" : true, 
+                                          "searchUrl" : "/api/addresses/search", 
+                                          "secondarySearchUrl" : "/api/addresses/search", 
+                                          "dataPointer" : "/applicants/applicant_1/homeAddress", 
+                                          "toolTip" : {
+                                              "tip" : "Personal home address of second owner"
+                                          }, 
+                                          "texts" : {
+                                              "pleaseUseCorrectFormat" : "Please use the correct format for your postcode, eg. A65 F4E2.", 
+                                              "enterAddressManually" : "Enter address manually", 
+                                              "findAddressByPostCode" : "Find address by postcode", 
+                                              "unknownAddressPt1" : "Your postcode cannot be found. Please click the link below to ", 
+                                              "unknownAddressPt2" : "enter your address manually.", 
+                                              "placeholders" : {
+                                                  "line1" : "Address line 1", 
+                                                  "line2" : "Address line 2", 
+                                                  "city" : "City", 
+                                                  "searchBox" : "Postal code", 
+                                                  "manualSearchBox" : "Postal code"
+                                              }, 
+                                              "lookupAriaLabel" : "Postal code"
+                                          }
+                                      }, 
+                                      "errorMessage" : {
+                                          "pattern" : "Please use the correct format for your postcode, eg. A65 F4E2."
+                                      }
+                                  }, 
+                                  "homeOwnership" : {
+                                      "component" : "buttonGroup", 
+                                      "properties" : {
+                                          "icons" : {
+                                              "1" : "HOME-OWNER-ROUNDED-FILLED", 
+                                              "2" : "RENTING-ROUNDED-FILLED", 
+                                              "3" : "OTHER-HOME-OWNER-STATUS-ROUNDED-FILLED"
+                                          }
+                                      }, 
+                                      "step" : NumberInt(5), 
+                                      "trigger" : "answerAndMoveNext"
+                                  }
+                              }
+                          }, 
+                          "submitButton" : {
+                              "component" : "button", 
+                              "loader" : {
+                                  "showAfterSubmit" : true, 
+                                  "text" : [
+                                      "One moment while we generate your decision.", 
+                                      "One more moment while we generate your quote!"
+                                  ]
+                              }, 
+                              "properties" : {
+                                  "text" : "Continue", 
+                                  "data-edit-text" : "Save and Continue"
+                              }
+                          }, 
+                          "stepProperties" : {
+                              "2" : {
+                                  "nextButton" : {
+                                      "hidden" : true
+                                  }
+                              }, 
+                              "3" : {
+                                  "header" : {
+                                      "properties" : {
+                                          "children" : "Confirm details of second owner"
+                                      }
+                                  }
+                              }, 
+                              "4" : {
+                                  "header" : {
+                                      "properties" : {
+                                          "children" : "Confirm details of second owner"
+                                      }
+                                  }
+                              }, 
+                              "5" : {
+                                  "header" : {
+                                      "properties" : {
+                                          "children" : "Confirm details of second owner"
+                                      }
+                                  }, 
+                                  "submitButton" : {
+                                      "hidden" : true
+                                  }
+                              }, 
+                              "6" : {
+                                  "header" : {
+                                      "properties" : {
+                                          "children" : "Confirm your details"
+                                      }
+                                  }, 
+                                  "appendAdditionalComponents" : [
+                                      {
+                                          "component" : "Text", 
+                                          "properties" : {
+                                              "children" : "Thanks, you've given us all the information needed to give you your decision and quote."
+                                          }
+                                      }, 
+                                      {
+                                          "component" : "ConfirmationCard", 
+                                          "internalProperties" : {
+                                              "useInternalValues" : [
+                                                  "data", 
+                                                  "dataSchema"
+                                              ]
+                                          }, 
+                                          "properties" : {
+                                              "confirmationTitle" : {
+                                                  "keys" : [
+                                                      "/applicants/applicant_0/firstName", 
+                                                      "/applicants/applicant_0/lastName"
+                                                  ], 
+                                                  "title" : "Owner 1 - Your details"
+                                              }, 
+                                              "confirmationSections" : {
+                                                  "PersonalInformation" : {
+                                                      "sectionTitle" : "Personal information", 
+                                                      "sectionData" : [
+                                                          "/applicants/applicant_0/email", 
+                                                          {
+                                                              "component" : "telephone", 
+                                                              "properties" : {
+                                                                  "telephone" : "/applicants/applicant_0/telephone", 
+                                                                  "pattern" : "^\\+?[\\d\\s]{9,40}$"
+                                                              }
+                                                          }
+                                                      ], 
+                                                      "editable" : true
+                                                  }, 
+                                                  "dateOfBirth" : {
+                                                      "sectionTitle" : "Date of birth", 
+                                                      "sectionData" : [
+                                                          {
+                                                              "component" : "date", 
+                                                              "properties" : {
+                                                                  "ISODateTime" : "/applicants/applicant_0/dateOfBirth"
+                                                              }
+                                                          }
+                                                      ], 
+                                                      "editable" : false
+                                                  }, 
+                                                  "homeAddress" : {
+                                                      "sectionTitle" : "Home address", 
+                                                      "sectionData" : [
+                                                          "/applicants/applicant_0/homeAddress/postCode", 
+                                                          "/applicants/applicant_0/homeAddress/line1", 
+                                                          "/applicants/applicant_0/homeAddress/line2", 
+                                                          "/applicants/applicant_0/homeAddress/city"
+                                                      ], 
+                                                      "editable" : false
+                                                  }, 
+                                                  "homeOwnership" : {
+                                                      "sectionTitle" : "Homeowner status", 
+                                                      "sectionData" : [
+                                                          "/applicants/applicant_0/homeOwnership"
+                                                      ], 
+                                                      "editable" : false
+                                                  }
+                                              }
+                                          }
+                                      }, 
+                                      {
+                                          "component" : "ConfirmationCard", 
+                                          "internalProperties" : {
+                                              "useInternalValues" : [
+                                                  "data", 
+                                                  "dataSchema"
+                                              ]
+                                          }, 
+                                          "properties" : {
+                                              "confirmationTitle" : {
+                                                  "keys" : [
+                                                      "/applicants/applicant_1/firstName", 
+                                                      "/applicants/applicant_1/lastName"
+                                                  ], 
+                                                  "title" : "Owner 2 - Their details"
+                                              }, 
+                                              "confirmationSections" : {
+                                                  "personalInformation" : {
+                                                      "sectionTitle" : "Personal information", 
+                                                      "sectionData" : [
+                                                          "/applicants/applicant_1/email", 
+                                                          {
+                                                              "component" : "telephone", 
+                                                              "properties" : {
+                                                                  "telephone" : "/applicants/applicant_1/telephone", 
+                                                                  "pattern" : "^\\+?[\\d\\s]{9,40}$"
+                                                              }
+                                                          }
+                                                      ], 
+                                                      "editable" : true
+                                                  }, 
+                                                  "dateOfBirth" : {
+                                                      "sectionTitle" : "Date of birth", 
+                                                      "sectionData" : [
+                                                          {
+                                                              "component" : "date", 
+                                                              "properties" : {
+                                                                  "ISODateTime" : "/applicants/applicant_1/dateOfBirth"
+                                                              }
+                                                          }
+                                                      ], 
+                                                      "editable" : false
+                                                  }, 
+                                                  "homeAddress" : {
+                                                      "sectionTitle" : "Home address", 
+                                                      "sectionData" : [
+                                                          "/applicants/applicant_1/homeAddress/postCode", 
+                                                          "/applicants/applicant_1/homeAddress/line1", 
+                                                          "/applicants/applicant_1/homeAddress/line2", 
+                                                          "/applicants/applicant_1/homeAddress/city"
+                                                      ], 
+                                                      "editable" : false
+                                                  }, 
+                                                  "homeOwnership" : {
+                                                      "sectionTitle" : "Homeowner status", 
+                                                      "sectionData" : [
+                                                          "/applicants/applicant_1/homeOwnership"
+                                                      ], 
+                                                      "editable" : false
+                                                  }
+                                              }
+                                          }
+                                      }, 
+                                      {
+                                          "component" : "Acknowledge", 
+                                          "properties" : {
+                                              "toa" : "By continuing with your application, you understand we will share the information you submit in this application with credit reference and fraud prevention agencies for the purposes of carrying out credit checks and fraud related searches. For more information on how your data will be used and shared, please see our Privacy Policy."
+                                          }
+                                      }
+                                  ]
+                              }, 
+                              "additionalStepIndex" : [
+                                  NumberInt(6)
+                              ]
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}

@@ -1,0 +1,543 @@
+"dynamicMetadata" : {
+        "route" : "/start", 
+        "template" : {
+            "componentName" : "ExplorerPage", 
+            "properties" : {
+                "downIcon" : {
+                    "width" : "0", 
+                    "height" : "0", 
+                    "icon" : "ARROW-DOWN", 
+                    "viewBox" : "0 0 66 88", 
+                    "title" : "Scroll page down", 
+                    "source" : "internal", 
+                    "fill" : "", 
+                    "className" : "", 
+                    "styleProps" : {
+
+                    }, 
+                    "stroke" : "", 
+                    "svg" : [
+                        ""
+                    ]
+                }, 
+                "navbar" : {
+                    "componentName" : "Navbar", 
+                    "properties" : {
+                        "phoneNumber" : "+353 1800 814180", 
+                        "logo" : {
+                            "isInternal" : true, 
+                            "logoId" : "elavonLogoWhiteMobile", 
+                            "width" : NumberInt(192)
+                        }
+                    }
+                }, 
+                "stickyHeader" : {
+                    "componentName" : "StickyHeader", 
+                    "properties" : {
+                        "buttonText" : "Start applying", 
+                        "logo" : {
+                            "isInternal" : true, 
+                            "logoId" : "elavonLogoBlack", 
+                            "alt" : "Elavon", 
+                            "heigth" : "70"
+                        }, 
+                        "isLogoTop" : true
+                    }, 
+                    "strategies" : [
+                        {
+                            "name" : "TrackingStrategy", 
+                            "options" : {
+
+                            }
+                        }
+                    ]
+                }, 
+                "hero" : {
+                    "componentName" : "Hero", 
+                    "properties" : {
+                        "heading" : {
+                            "children" : "Revenue-based finance"
+                        }, 
+                        "text" : {
+                            "children" : "Our funding is designed for \nsmall businesses like yours."
+                        }, 
+                        "logo" : {
+                            "isInternal" : true, 
+                            "logoId" : "elavonLogoWhite", 
+                            "alt" : "Elavon"
+                        }, 
+                        "headingCardContent" : {
+                            "componentName" : "Form", 
+                            "strategies" : [
+                                {
+                                    "name" : "MarketingSubmissionStrategy", 
+                                    "options" : {
+                                        "formAction" : "getStartJourneyPage"
+                                    }
+                                }
+                            ], 
+                            "properties" : {
+                                "dataSchema" : {
+                                    "title" : "To apply, start by entering your merchant ID", 
+                                    "type" : "object", 
+                                    "required" : [
+                                        "reference"
+                                    ], 
+                                    "properties" : {
+                                        "reference" : {
+                                            "type" : "object", 
+                                            "title" : "Home address...", 
+                                            "allOf" : [
+                                                {
+                                                    "required" : [
+                                                        "zipCode", 
+                                                        "line1"
+                                                    ]
+                                                }
+                                            ], 
+                                            "properties" : {
+                                                "line1" : {
+                                                    "type" : "string", 
+                                                    "title" : "Line 1"
+                                                }, 
+                                                "line2" : {
+                                                    "type" : "string", 
+                                                    "title" : "Line 2"
+                                                }, 
+                                                "state" : {
+                                                    "type" : "string", 
+                                                    "title" : "State"
+                                                }, 
+                                                "zipCode" : {
+                                                    "type" : "string", 
+                                                    "title" : "Zip code"
+                                                }, 
+                                                "country" : {
+                                                    "readOnly" : true, 
+                                                    "type" : "string", 
+                                                    "default" : "USA"
+                                                }
+                                            }
+                                        }, 
+                                        "consentPartnerDataSharing" : {
+                                            "type" : "boolean", 
+                                            "title" : "I give my consent to Elavon to share my transactional data with Liberis to facilitate the processing of my application.", 
+                                            "enum" : [
+                                                true
+                                            ]
+                                        }
+                                    }
+                                }, 
+                                "uiSchema" : {
+                                    "header" : {
+                                        "properties" : {
+                                            "align" : "left", 
+                                            "heading" : "h2"
+                                        }
+                                    }, 
+                                    "reference" : {
+                                        "component" : "loqateAddressLookup", 
+                                        "internalProperties" : {
+                                            "onload" : {
+                                                "hideChildren" : true
+                                            }, 
+                                            "useInternalValues" : [
+                                                "toggleDisplay", 
+                                                "setValue", 
+                                                "clearError"
+                                            ]
+                                        }, 
+                                        "step" : 1.0, 
+                                        "properties" : {
+                                            "findAddressURL" : "/api/addresses/search", 
+                                            "retrieveAddressURL" : "/api/addresses/retrieve", 
+                                            "dataSchemaToLoqateFieldMap" : {
+                                                "line1" : "Line1", 
+                                                "line2" : "Line2", 
+                                                "state" : "Province", 
+                                                "zipCode" : "PostalCode"
+                                            }, 
+                                            "showSearchInputText" : "Search for the address", 
+                                            "showManualInputText" : "Enter the address manually", 
+                                            "showManualForm" : "true", 
+                                            "noMatchText" : "Nope! Can't find that, try to ", 
+                                            "noMatchManualFormlLinkText" : "enter the address manually", 
+                                            "errorMessage" : "We've had a problem looking for that - try again later"
+                                        }, 
+                                        "errorMessage" : {
+                                            "pattern" : "Please use the correct format for your postcode, eg. W12 7RZ."
+                                        }, 
+                                        "line1" : {
+                                            "properties" : {
+                                                "noMargin" : true, 
+                                                "hiddenLabel" : true, 
+                                                "placeholder" : "Line 1"
+                                            }, 
+                                            "step" : 1.0
+                                        }, 
+                                        "line2" : {
+                                            "properties" : {
+                                                "noMargin" : true, 
+                                                "hiddenLabel" : true, 
+                                                "placeholder" : "Line 2"
+                                            }, 
+                                            "step" : 1.0
+                                        }, 
+                                        "state" : {
+                                            "properties" : {
+                                                "noMargin" : true, 
+                                                "hiddenLabel" : true, 
+                                                "placeholder" : "State"
+                                            }, 
+                                            "step" : 1.0
+                                        }, 
+                                        "zipCode" : {
+                                            "properties" : {
+                                                "noMargin" : true, 
+                                                "hiddenLabel" : true, 
+                                                "placeholder" : "zip code"
+                                            }, 
+                                            "step" : 1.0
+                                        }, 
+                                        "country" : {
+                                            "component" : "hiddenInput"
+                                        }
+                                    }, 
+                                    "consentPartnerDataSharing" : {
+                                        "component" : "checkbox", 
+                                        "displayBelowSubmit" : true, 
+                                        "properties" : {
+                                            "dataCy" : "consent", 
+                                            "isFullWidth" : true
+                                        }, 
+                                        "errorMessage" : {
+                                            "enum" : "In order to proceed, please let us know if you are happy for Elavon to share your data with Liberis."
+                                        }
+                                    }, 
+                                    "submitButton" : {
+                                        "component" : "button", 
+                                        "properties" : {
+                                            "dataCy" : "confirmButton", 
+                                            "text" : "Start", 
+                                            "isFullWidth" : true
+                                        }
+                                    }
+                                }
+                            }
+                        }, 
+                        "salesFormLink" : {
+                            "componentName" : "Form", 
+                            "strategies" : [
+                                {
+                                    "name" : "MarketingSubmissionStrategy", 
+                                    "options" : {
+                                        "formAction" : "getStartJourneyPage"
+                                    }
+                                }
+                            ], 
+                            "properties" : {
+                                "dataSchema" : {
+                                    "type" : "object", 
+                                    "properties" : {
+                                        "goToSalesform" : {
+                                            "type" : "boolean", 
+                                            "default" : true
+                                        }
+                                    }
+                                }, 
+                                "uiSchema" : {
+                                    "goToSalesform" : {
+                                        "component" : "hiddenInput"
+                                    }, 
+                                    "submitButton" : {
+                                        "dataCy" : "salesform", 
+                                        "component" : "button", 
+                                        "properties" : {
+                                            "text" : "Don't know your merchant ID?", 
+                                            "variant" : "link"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, 
+                "education" : {
+                    "componentName" : "HeadingAndList", 
+                    "properties" : {
+                        "heading" : {
+                            "children" : "Simple. Stress-Free. \n Like Business Finance Should Be.", 
+                            "heading" : "h2", 
+                            "styleAs" : "h1"
+                        }, 
+                        "iconColor" : "tertiary", 
+                        "list" : [
+                            {
+                                "icon" : {
+                                    "source" : "internal", 
+                                    "width" : "36", 
+                                    "height" : "36", 
+                                    "fill" : "", 
+                                    "icon" : "lightbulb", 
+                                    "viewBox" : "0 0 36 36", 
+                                    "title" : "Light Bulb", 
+                                    "className" : "", 
+                                    "styleProps" : {
+
+                                    }, 
+                                    "stroke" : "", 
+                                    "svg" : [
+                                        ""
+                                    ]
+                                }, 
+                                "heading" : "Quick and hassle-free", 
+                                "paragraph" : "Funds could be in your account within just a few days.*"
+                            }, 
+                            {
+                                "icon" : {
+                                    "source" : "internal", 
+                                    "width" : "36", 
+                                    "height" : "36", 
+                                    "fill" : "", 
+                                    "icon" : "pricetag", 
+                                    "viewBox" : "0 0 36 36", 
+                                    "title" : "Price Tag", 
+                                    "className" : "", 
+                                    "styleProps" : {
+
+                                    }, 
+                                    "stroke" : "", 
+                                    "svg" : [
+                                        ""
+                                    ]
+                                }, 
+                                "heading" : "Transparent pricing", 
+                                "paragraph" : "One price, agreed upfront.", 
+                                "alignCenter" : true
+                            }, 
+                            {
+                                "icon" : {
+                                    "source" : "internal", 
+                                    "width" : "36", 
+                                    "height" : "36", 
+                                    "fill" : "", 
+                                    "icon" : "pig", 
+                                    "viewBox" : "0 0 36 38", 
+                                    "title" : "Piggy Bank", 
+                                    "className" : "", 
+                                    "styleProps" : {
+
+                                    }, 
+                                    "stroke" : "", 
+                                    "svg" : [
+                                        ""
+                                    ]
+                                }, 
+                                "heading" : "Revenue-based payments", 
+                                "paragraph" : "Pay us when customers pay you**, through an agreed % of your daily card revenue."
+                            }
+                        ]
+                    }
+                }, 
+                "infographic" : {
+                    "componentName" : "Graph", 
+                    "properties" : {
+                        "title" : "Payments flex in line with card revenue", 
+                        "htmlTag" : "section", 
+                        "svg" : {
+                            "partnerKey" : "Payments to Elavon", 
+                            "label" : "Graph illustrating how payments to Elavon flex up and down based on income."
+                        }
+                    }
+                }, 
+                "journeyOverview" : {
+                    "componentName" : "HeadingAndList", 
+                    "properties" : {
+                        "backgroundColor" : "secondary", 
+                        "heading" : {
+                            "children" : "Fund your business in just 3 steps.", 
+                            "heading" : "h2", 
+                            "color" : "secondary"
+                        }, 
+                        "listProps" : {
+                            "color" : "secondary"
+                        }, 
+                        "list" : [
+                            {
+                                "heading" : "Apply online by confirming your details", 
+                                "paragraph" : "Our online application only takes a few minutes to complete. Once\nyou confirm your details, you'll get a decision on the spot.", 
+                                "boldIcon" : true, 
+                                "headingColor" : "secondary"
+                            }, 
+                            {
+                                "heading" : "Choose your quote", 
+                                "paragraph" : "You'll know if you're approved right away, with no impact to your credit score***. Simply select the quote that works best for you.", 
+                                "boldIcon" : true, 
+                                "alignCenter" : true, 
+                                "headingColor" : "secondary"
+                            }, 
+                            {
+                                "heading" : "Set-up your account", 
+                                "paragraph" : "Finally, finish setting up your account and your funds could be on their way within just a few days. Enjoy!", 
+                                "boldIcon" : true, 
+                                "headingColor" : "secondary"
+                            }
+                        ], 
+                        "htmlTag" : "section"
+                    }
+                }, 
+                "testimonial" : {
+                    "componentName" : "Testimonial", 
+                    "properties" : {
+                        "title" : "What our customers say", 
+                        "quoteText" : "The funding has been a great enabler, allowing us to fast forward our growth. Without it, we’d be a year behind where we are now.", 
+                        "quoteAuthor" : "Keith Swan", 
+                        "quoteAuthorTitle" : "Kenilworth Carpets", 
+                        "htmlTag" : "section"
+                    }
+                }, 
+                "companyReference" : {
+                    "componentName" : "CompanyReference", 
+                    "properties" : {
+                        "form" : {
+                            "componentName" : "Form", 
+                            "strategies" : [
+                                {
+                                    "name" : "MarketingSubmissionStrategy", 
+                                    "options" : {
+                                        "formAction" : "getStartJourneyPage"
+                                    }
+                                }
+                            ], 
+                            "properties" : {
+                                "dataSchema" : {
+                                    "title" : "To get your quote, start by entering  your merchant ID", 
+                                    "type" : "object", 
+                                    "required" : [
+                                        "reference"
+                                    ], 
+                                    "properties" : {
+                                        "reference" : {
+                                            "type" : "string", 
+                                            "title" : "Merchant ID ", 
+                                            "default" : "##queryIdentifier##"
+                                        }, 
+                                        "consentPartnerDataSharing" : {
+                                            "type" : "boolean", 
+                                            "title" : "I give my consent to Elavon to share my transactional data with Liberis to facilitate the processing of my application.", 
+                                            "enum" : [
+                                                true
+                                            ]
+                                        }
+                                    }
+                                }, 
+                                "uiSchema" : {
+                                    "header" : {
+                                        "properties" : {
+                                            "align" : "center", 
+                                            "heading" : "h2", 
+                                            "color" : "secondary"
+                                        }
+                                    }, 
+                                    "reference" : {
+                                        "properties" : {
+                                            "hiddenLabel" : true, 
+                                            "placeholder" : "Merchant ID", 
+                                            "isFullWidth" : true, 
+                                            "toolTip" : {
+                                                "tip" : "MID can be located on your Elavon Statement or in Elavon Connect.", 
+                                                "fillColor" : "tertiary"
+                                            }, 
+                                            "color" : "secondary", 
+                                            "autoComplete" : "off"
+                                        }, 
+                                        "errorMessage" : {
+                                            "required" : "Please re-enter your MID, ensuring that it is formatted correctly."
+                                        }
+                                    }, 
+                                    "consentPartnerDataSharing" : {
+                                        "component" : "checkbox", 
+                                        "displayBelowSubmit" : true, 
+                                        "properties" : {
+                                            "isFullWidth" : true, 
+                                            "color" : "secondary"
+                                        }, 
+                                        "errorMessage" : {
+                                            "enum" : "In order to proceed, please let us know if you are happy for Elavon to share your data with Liberis."
+                                        }
+                                    }, 
+                                    "submitButton" : {
+                                        "component" : "button", 
+                                        "properties" : {
+                                            "text" : "Confirm", 
+                                            "isFullWidth" : true
+                                        }
+                                    }
+                                }
+                            }
+                        }, 
+                        "color" : "secondary", 
+                        "phone" : {
+                            "description" : "Need help?", 
+                            "number" : "+353 1800 814180"
+                        }, 
+                        "salesFormLink" : {
+                            "componentName" : "Form", 
+                            "strategies" : [
+                                {
+                                    "name" : "MarketingSubmissionStrategy", 
+                                    "options" : {
+                                        "formAction" : "getStartJourneyPage"
+                                    }
+                                }
+                            ], 
+                            "properties" : {
+                                "dataSchema" : {
+                                    "type" : "object", 
+                                    "properties" : {
+                                        "goToSalesform" : {
+                                            "type" : "boolean", 
+                                            "default" : true
+                                        }
+                                    }
+                                }, 
+                                "uiSchema" : {
+                                    "goToSalesform" : {
+                                        "component" : "hiddenInput"
+                                    }, 
+                                    "submitButton" : {
+                                        "component" : "button", 
+                                        "properties" : {
+                                            "text" : "Don't know your merchant ID?", 
+                                            "variant" : "link", 
+                                            "color" : "secondary"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, 
+                "footer" : {
+                    "componentName" : "Footer", 
+                    "properties" : {
+                        "text" : "*As of April 2021, 86% of successful applications received funding within 2 working days. Any preliminary approval will be based on the information about your business that is available at the time. You will get a final decision after submitting an actual application.<br/>**You will be expected to operate your business in a way that ensures Liberis receives a monthly minimum amount of 3% of the total amount owed to Liberis.<br/>***Your credit score is unaffected when obtaining a quote. However, taking out a Liberis Cash Advance may affect your credit score, and any decision to take out a Liberis Cash Advance shall be solely at your own risk.<br/>This product is provided by Liberis Limited, a company registered in England and Wales with company number: 05654231 and address at: Space Building, 1st Floor, Scale, 58 Wood Ln, London W12 7RZ. Liberis is a responsible financial provider. Liberis’ Business Cash Advance is a form of receivables finance. Liberis does not provide regulated lending products of any type. The minimum expected duration of a Business Cash Advance is 120 days. Liberis is not authorised or regulated by the Financial Conduct Authority and the Financial Ombudsman Service will not be able to consider a complaint about Liberis. Amounts advanced are subject to status and our underwriting process before any offer can be made.<br/>The Elavon in partnership with Liberis Revenue-based Finance product is provided by Liberis Ltd. Eligibility criteria and terms and conditions apply. The Elavon in partnership with Liberis Revenue-based Finance product is not a Financial Conduct Authority regulated product, it is provided by Liberis Ltd and Elavon will receive a commission.</p>", 
+                        "links" : [
+                            {
+                                "href" : "https://apply.liberis.co.uk/elavon-privacy", 
+                                "children" : "Privacy Policy"
+                            }, 
+                            {
+                                "href" : "https://apply.liberis.co.uk/elavon-terms", 
+                                "children" : "Terms and Conditions"
+                            }, 
+                            {
+                                "href" : "https://apply.liberis.co.uk/elavon-cookies", 
+                                "children" : "Cookie Notice"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
