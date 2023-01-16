@@ -159,3 +159,6 @@ Using the ingress-nginx tool
 `https://kubernetes.github.io/ingress-nginx/deploy/`
 
 Applying the config file from ingress-nginx it creates a LoadBalancer service and an ingress controller
+
+#### Creating a secret
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
