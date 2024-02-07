@@ -1,0 +1,50 @@
+POST http://localhost:3000/signup
+content-type: application/json
+
+{
+  "email": "test4@test.com",
+  "password": "password"
+}
+
+###
+
+GET http://localhost:3000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTlmNzE4ZTc4MmFlMmMxM2ZjMzI4ZWEiLCJpYXQiOjE3MDQ5NDg5NDB9.m3DxG0PGlUqgHbxpzr4qT9BQLDkvQynifE-D7pTta6c
+
+###
+
+POST http://localhost:3000/signin
+content-type: application/json
+
+{
+  "email": "test4@test.com",
+  "password": "password"
+}
+
+###
+
+GET http://localhost:3000/tracks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTlmNzE4ZTc4MmFlMmMxM2ZjMzI4ZWEiLCJpYXQiOjE3MDQ5NDg5NDB9.m3DxG0PGlUqgHbxpzr4qT9BQLDkvQynifE-D7pTta6c
+
+###
+
+POST http://localhost:3000/tracks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTlmNzE4ZTc4MmFlMmMxM2ZjMzI4ZWEiLCJpYXQiOjE3MDQ5NDg5NDB9.m3DxG0PGlUqgHbxpzr4qT9BQLDkvQynifE-D7pTta6c
+content-type: application/json
+
+{
+  "name": "My track",
+  "locations": [
+    {
+      "timestamp": 10000000,
+      "coords": {
+        "latitude": 100,
+        "longitude": 100,
+        "altitude": 100,
+        "accuracy": 100,
+        "heading": 100,
+        "speed": 100
+      }
+    }
+  ]
+}
